@@ -1,0 +1,31 @@
+# 原有代码
+
+proxy-groups:
+  # 原有代码
+  # 添加
+  - name: "IP-Rotation"
+    type: select
+    proxies:
+      - GLaDOS-B1-01
+      - GLaDOS-B1-02
+      - GLaDOS-B1-03
+      - GLaDOS-B1-04
+      - GLaDOS-B1-05
+      - GLaDOS-B1-06
+      - GLaDOS-B1-07
+      - GLaDOS-B1-08
+      - GLaDOS-T3-01
+      - GLaDOS-T3-02
+      - GLaDOS-T3-03
+      - GLaDOS-T3-04
+      - GLaDOS-T3-05
+      - GLaDOS-T3-06
+      - GLaDOS-US-01
+      - GLaDOS-US-02
+      - GLaDOS-US-03
+      - GLaDOS-US-04
+      - GLaDOS-US-05
+      - GLaDOS-US-06
+      - GLaDOS-TW-01
+
+# 原有代码
