@@ -9,12 +9,21 @@
 - 📊 实时监控节点切换状态
 - 🛡️ 异常处理和错误重试
 - 📝 详细的切换日志记录
+- 🔧 自动检测和修复代理配置问题
+- 🚨 智能诊断工具集
 
 ## 文件说明
 
 ### 核心脚本
 - `auto_rotate_ip.py` - 自动轮换IP的主脚本
-- `monitor_ip_rotation.py` - 监控节点切换状态的脚本
+- `monitor_ip_rotation.py` - 监控节点切换状态的脚本（已优化，包含自动修复功能）
+
+### 诊断工具
+- `diagnose_clash.py` - 全面诊断Clash API和代理连接状态
+- `check_clash_routing.py` - 检查和自动修复代理路由配置
+- `check_proxy_status.py` - 检查系统代理设置和连接状态
+- `explain_clash_config.py` - 详细解释Clash配置问题
+- `find_global_source.py` - 分析GLOBAL代理组来源
 
 ### 配置文件
 - `profiles/Rftlj0wRHup8.yaml` - Clash 配置文件，包含 IP-Rotation 代理组
@@ -43,6 +52,25 @@ python auto_rotate_ip.py
 ### 3. 监控切换状态
 ```bash
 python monitor_ip_rotation.py
+```
+
+## 🔧 问题诊断
+
+如果遇到代理不工作的问题，可以使用以下诊断工具：
+
+### 全面诊断
+```bash
+python diagnose_clash.py
+```
+
+### 检查代理路由
+```bash
+python check_clash_routing.py
+```
+
+### 检查系统代理
+```bash
+python check_proxy_status.py
 ```
 
 ## 使用方法
@@ -105,6 +133,12 @@ proxies = [
 
 ## 故障排除
 
+### 🚨 最新修复：GLOBAL代理组问题
+
+**问题**：监控脚本显示真实IP而不是代理IP
+**原因**：Clash的GLOBAL代理组默认选择了DIRECT，导致流量直连
+**解决**：运行 `python monitor_ip_rotation.py`，脚本会自动检测并修复此问题
+
 ### 常见问题
 
 **Q: 脚本提示"请求异常"**
@@ -116,6 +150,19 @@ A: 检查节点名称是否正确，节点是否在配置文件中
 **Q: 监控脚本显示"无法获取代理组信息"**
 A: 确认已选择 IP-Rotation 代理组，且组名拼写正确
 
+**Q: 获取的是真实IP而不是代理IP**
+A: 运行 `python check_clash_routing.py` 检查GLOBAL代理组设置
+
+**Q: SSL连接错误**
+A: 已在新版本中修复，脚本会自动禁用SSL警告
+
+### 诊断步骤
+
+1. **全面诊断**：`python diagnose_clash.py`
+2. **检查路由**：`python check_clash_routing.py`
+3. **检查系统代理**：`python check_proxy_status.py`
+4. **查看详细解释**：`python explain_clash_config.py`
+
 ### 调试模式
 在脚本中添加更详细的日志：
 
@@ -123,6 +170,15 @@ A: 确认已选择 IP-Rotation 代理组，且组名拼写正确
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## 更新日志
+
+### v2.0 (2025-01-25)
+- 🔧 修复GLOBAL代理组默认选择DIRECT的问题
+- 🚨 添加自动检测和修复功能
+- 🛠️ 新增完整的诊断工具集
+- 📝 优化错误处理和SSL兼容性
+- 📊 改进监控脚本的稳定性
 
 ## 许可证
 
